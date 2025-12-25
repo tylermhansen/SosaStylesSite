@@ -1,42 +1,27 @@
 backend:
   name: github
-  repo: "tylermhansen/SosaStylesSite"
+  repo: tylermhansen/SosaStylesSite
   branch: main
 
-media_folder: "assets/uploads"
-public_folder: "/assets/uploads"
+media_folder: assets/uploads
+public_folder: /assets/uploads
 
 collections:
-  - name: "portfolio"
-    label: "Portfolio"
-    extension: "yml"
-    format: "yaml"
-    files:
-      - label: "Portfolio Items"
-        name: "portfolio"
-        file: "_data/portfolio.yml"
-        fields:
-          - label: "Portfolio Items"
-            name: "root"
-            widget: "list"
-            fields:
-              - { label: "Title", name: "title", widget: "string" }
-              - { label: "Alt text", name: "alt", widget: "string" }
-              - { label: "Main Image Path", name: "src", widget: "string", hint: "e.g. /assets/portfolio/image.jpg" }
-              - label: "Gallery Images"
-                name: "images"
-                widget: "list"
-                field: { label: "Image URL", name: "item", widget: "string" }
-              - { label: "Description", name: "description", widget: "text" }
-              - { label: "Package Type", name: "package", widget: "select", options: ["Classic", "Editorial"] }
-              - { label: "Date", name: "date", widget: "string", hint: "e.g. June 15, 2024" }
-
-  - name: "pages"
-    label: "Pages (single files)"
-    files:
-      - label: "Contact Page"
-        name: "contact"
-        file: "contact.md"
-        fields:
-          - { label: "Title", name: "title", widget: "string" }
-          - { label: "Body", name: "body", widget: "markdown" }
+  - name: portfolio
+    label: Portfolio
+    folder: _data
+    create: false
+    extension: yml
+    format: yaml
+    slug: "{{title}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Alt Text", name: "alt", widget: "string" }
+      - { label: "Image", name: "src", widget: "string" }
+      - label: "Gallery"
+        name: "images"
+        widget: "list"
+        field: { label: "Image", name: "image", widget: "string" }
+      - { label: "Description", name: "description", widget: "text" }
+      - { label: "Package", name: "package", widget: "select", options: ["Classic", "Editorial"] }
+      - { label: "Date", name: "date", widget: "string" }
