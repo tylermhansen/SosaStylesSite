@@ -7,38 +7,35 @@
     <title>Sosa Studios — Content Manager</title>
   </head>
   <body>
-    <script src="https://unpkg.com/decap-cms-app@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/decap-cms-app@^3.1.0"></script>
     <script>
-      // Decap CMS with GitHub Personal Access Token
-      // Prompts for token on first load, stores in localStorage
-      document.addEventListener('DOMContentLoaded', () => {
-        const getToken = () => {
+      // Decap CMS with GitHub Personal Access Token auth
+      if (!window.CMS_MANUAL_INIT) {
+        // Get or prompt for GitHub token
+        const getGitHubToken = () => {
           let token = localStorage.getItem('decap_github_token');
           if (!token) {
             token = prompt(
               'Enter your GitHub Personal Access Token\n\n' +
-              'Create one at: https://github.com/settings/tokens\n' +
+              'Create one at: https://github.com/settings/tokens/new\n' +
               'Scopes needed: repo, user:email\n\n' +
-              'Token will be saved to localStorage (secure in your browser only)'
+              'Token will be stored in browser localStorage only (never sent to external servers)'
             );
             if (token) {
               localStorage.setItem('decap_github_token', token);
+            } else {
+              alert('GitHub token is required to use the CMS');
             }
           }
           return token;
         };
 
-        // Register custom GitHub backend with token
-        if (window.CMS) {
-          window.CMS.registerBackend('github', window.DecapCmsBackendGithub);
-          
-          // Override token retrieval
-          const token = getToken();
-          if (token) {
-            window.CMS.Backend.getBackend('github').authToken = token;
-          }
+        // Initialize with token
+        const token = getGitHubToken();
+        if (token && window.DecapCms) {
+          window.DecapCms.init();
         }
-      });
+      }
     </script>
   </body>
 </html>
