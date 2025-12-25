@@ -1,6 +1,7 @@
-# Portfolio items for Sosa Studios
-# Each item: title, alt, src, images, description, package, date
-- title: "Romantic Waves"
+items:
+  # Portfolio items for Sosa Studios
+  # Each item: title, alt, src, images, description, package, date
+  - title: "Romantic Waves"
   alt: "Bridal hair - romantic waves"
   src: "/assets/portfolio/bridal_party_1.jpg"
   images:
@@ -11,7 +12,7 @@
   package: "Editorial"
   date: "June 15, 2024"
 
-- title: "Elegant Updo"
+  - title: "Elegant Updo"
   alt: "Elegant bridal updo"
   src: "/assets/portfolio/bridal_party_4.jpg"
   images:
@@ -22,7 +23,7 @@
   package: "Editorial"
   date: "August 3, 2024"
 
-- title: "Soft Low Bun"
+  - title: "Soft Low Bun"
   alt: "Soft low bun hairstyle for bride"
   src: "/assets/portfolio/bridal_party_7.jpg"
   images:
@@ -33,7 +34,7 @@
   package: "Classic"
   date: "September 22, 2024"
 
-- title: "Braided Crown"
+  - title: "Braided Crown"
   alt: "Braided crown hairstyle"
   src: "https://picsum.photos/id/1016/1600/1067"
   images:
@@ -44,7 +45,7 @@
   package: "Editorial"
   date: "May 10, 2024"
 
-- title: "Half-Up Half-Down"
+  - title: "Half-Up Half-Down"
   alt: "Half-up half-down bridal style"
   src: "https://picsum.photos/id/1020/1600/1067"
   images:
@@ -55,7 +56,7 @@
   package: "Editorial"
   date: "July 8, 2024"
 
-- title: "Sleek Low Ponytail"
+  - title: "Sleek Low Ponytail"
   alt: "Sleek low ponytail for bride"
   src: "https://picsum.photos/id/1030/1600/1067"
   images:
@@ -66,7 +67,7 @@
   package: "Classic"
   date: "October 14, 2024"
 
-- title: "Romantic Side Sweep"
+  - title: "Romantic Side Sweep"
   alt: "Romantic side sweep hairstyle"
   src: "https://picsum.photos/id/1035/1600/1067"
   images:
