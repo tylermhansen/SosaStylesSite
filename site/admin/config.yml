@@ -1,0 +1,28 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "assets/uploads"
+public_folder: "/assets/uploads"
+
+collections:
+  - name: "portfolio"
+    label: "Portfolio"
+    folder: "_data"
+    create: true
+    extension: "yml"
+    format: "yaml"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Image path", name: "src", widget: "string", hint: "Path relative to site root, e.g. /assets/portfolio/romantic-waves.svg" }
+      - { label: "Alt text", name: "alt", widget: "string" }
+
+  - name: "pages"
+    label: "Pages (single files)"
+    files:
+      - label: "Contact Page"
+        name: "contact"
+        file: "contact.md"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Body", name: "body", widget: "markdown" }

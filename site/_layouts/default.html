@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>{{ page.title | default: site.seo.title }}</title>
+    <meta name="description" content="{{ page.description | default: site.seo.description }}">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CDN for quick setup -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+      html { scroll-behavior: smooth; }
+      :root{
+        --color-cream: {{ site.brand.palette.cream | default: '#F7EFE6' }};
+        --color-charcoal: {{ site.brand.palette.charcoal | default: '#222222' }};
+        --color-champagne: {{ site.brand.palette.champagne | default: '#D9CDBA' }};
+        --font-heading: '{{ site.brand.fonts.heading | default: 'Cormorant Garamond' }}', serif;
+        --font-body: '{{ site.brand.fonts.body | default: 'Inter' }}', sans-serif;
+      }
+      .font-heading{ font-family: var(--font-heading); }
+      .font-body{ font-family: var(--font-body); }
+      .break-inside-avoid{ break-inside: avoid; }
+      header { transition: transform 0.3s ease-in-out; }
+      header.header-hidden { transform: translateY(-100%); }
+      section[id] { scroll-margin-top: 120px; }
+    </style>
+
+  </head>
+  <body class="bg-[color:var(--color-cream)] text-[color:var(--color-charcoal)] font-body antialiased">
+    <header class="bg-white/95 backdrop-blur-sm border-b border-gray-100 py-4 sticky top-0 z-40">
+      <div class="container mx-auto px-6 flex items-center justify-between">
+        <a href="/" class="font-heading text-lg">{{ site.brand.name }}</a>
+        <nav class="space-x-6 hidden md:block">
+          <a href="/#home" class="text-sm hover:underline">Home</a>
+          <a href="/#featured" class="text-sm hover:underline">Featured</a>
+          <a href="/#about" class="text-sm hover:underline">About</a>
+          <a href="/#investment" class="text-sm hover:underline">Investment</a>
+          <a href="/#day-of" class="text-sm hover:underline">Day Of</a>
+          <a href="/#contact" class="text-sm hover:underline">Contact</a>
+        </nav>
+
+        <!-- Mobile menu toggle -->
+        <div class="md:hidden">
+          <button id="menu-toggle" aria-label="Open menu" class="p-2 rounded hover:bg-gray-100">
+            <svg id="menu-open" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
+            <svg id="menu-close" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile nav panel -->
+      <nav id="mobile-nav" class="hidden md:hidden border-t border-gray-100 bg-white/95">
+        <div class="container mx-auto px-6 py-4 flex flex-col">
+          <a href="/#home" class="py-2">Home</a>
+          <a href="/#featured" class="py-2">Featured</a>
+          <a href="/#about" class="py-2">About</a>
+          <a href="/#investment" class="py-2">Investment</a>
+          <a href="/#day-of" class="py-2">Day Of</a>
+          <a href="/#contact" class="py-2">Contact</a>
+        </div>
+      </nav>
+    </header>
+
+    <main class="min-h-screen">
+      {{ content }}
+    </main>
+
+    <footer class="mt-16 py-12 text-center text-sm text-gray-600">
+      <div class="container mx-auto px-6">
+        <p class="mb-2">&copy; {{ 'now' | date: '%Y' }} {{ site.brand.name }} — {{ site.brand.location }}</p>
+        <p>
+          {% if site.social.instagram %}<a href="{{ site.social.instagram }}" class="mx-2 hover:underline">Instagram</a>{% endif %}
+          {% if site.social.facebook %}<a href="{{ site.social.facebook }}" class="mx-2 hover:underline">Facebook</a>{% endif %}
+          {% if site.social.email %}<a href="mailto:{{ site.social.email }}" class="mx-2 hover:underline">Email</a>{% endif %}
+        </p>
+      </div>
+    </footer>
+
+    <!-- Lightbox modal -->
+    <div id="lightbox" class="fixed inset-0 z-50 hidden items-center justify-center p-2 sm:p-4" style="background: rgba(0,0,0,0.8); pointer-events: none;" aria-hidden="true">
+      <button id="lightbox-close" class="absolute top-4 right-4 text-white p-2 pointer-events-auto bg-black/50 rounded hover:bg-black/80 z-10 text-sm">Close</button>
+      <button id="lightbox-prev" class="absolute left-2 sm:left-4 top-1/2 transform -translate-y-1/2 text-white text-xl sm:text-2xl p-2 sm:p-4 pointer-events-auto bg-black/50 rounded hover:bg-black/80 cursor-pointer z-10">◀</button>
+      
+      <div class="w-full max-w-2xl sm:max-w-4xl pointer-events-auto bg-white rounded-lg overflow-hidden flex flex-col max-h-screen sm:max-h-[90vh]">
+        <!-- Image carousel -->
+        <div class="relative bg-black flex-shrink-0">
+          <img id="lightbox-image" src="" alt="" class="w-full h-auto max-h-64 sm:max-h-96 object-cover" />
+          <div class="absolute bottom-2 left-2 text-white text-xs sm:text-sm bg-black/70 px-2 sm:px-3 py-1 rounded">
+            <span id="lightbox-image-count"></span>
+          </div>
+        </div>
+        
+        <!-- Content section -->
+        <div class="p-4 sm:p-8 overflow-y-auto">
+          <h2 id="lightbox-title" class="font-heading text-2xl sm:text-3xl mb-3 sm:mb-4"></h2>
+          
+          <div class="grid grid-cols-2 gap-3 sm:gap-4 mb-4 sm:mb-6 text-xs sm:text-sm">
+            <div>
+              <p class="text-gray-600">Package</p>
+              <p id="lightbox-package" class="font-medium"></p>
+            </div>
+            <div>
+              <p class="text-gray-600">Wedding Date</p>
+              <p id="lightbox-date" class="font-medium"></p>
+            </div>
+          </div>
+          
+          <p id="lightbox-description" class="text-gray-700 leading-relaxed text-sm sm:text-base mb-4 sm:mb-6"></p>
+          
+          <!-- Additional image thumbnails -->
+          <div id="lightbox-thumbnails" class="flex gap-2 pb-2 overflow-x-auto"></div>
+        </div>
+      </div>
+      
+      <button id="lightbox-next" class="absolute right-2 sm:right-4 top-1/2 transform -translate-y-1/2 text-white text-xl sm:text-2xl p-2 sm:p-4 pointer-events-auto bg-black/50 rounded hover:bg-black/80 cursor-pointer z-10">▶</button>
+    </div>
+
+    <script>
+      // Smooth scroll with scrollIntoView
+      (function(){
+        document.querySelectorAll('a[href^="#"]').forEach(anchor=>{
+          anchor.addEventListener('click', function(e){
+            const href = this.getAttribute('href');
+            if(href === '#') return;
+            
+            e.preventDefault();
+            const target = document.querySelector(href);
+            if(!target) return;
+            
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          });
+        });
+      })();
+
+      // Header hide/show on scroll
+      (function(){
+        let lastScrollTop = 0;
+        const header = document.querySelector('header');
+        const scrollThreshold = 50;
+        
+        window.addEventListener('scroll', ()=>{
+          const scrollTop = window.scrollY || document.documentElement.scrollTop;
+          if(scrollTop > scrollThreshold){
+            if(scrollTop > lastScrollTop){
+              // scrolling down
+              header.classList.add('header-hidden');
+            } else {
+              // scrolling up
+              header.classList.remove('header-hidden');
+            }
+          } else {
+            header.classList.remove('header-hidden');
+          }
+          lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+        });
+      })();
+
+      // Mobile menu toggle (robust)
+      (function(){
+        const toggle = document.getElementById('menu-toggle');
+        const mobileNav = document.getElementById('mobile-nav');
+        const openIcon = document.getElementById('menu-open');
+        const closeIcon = document.getElementById('menu-close');
+        if(toggle && mobileNav){
+          toggle.addEventListener('click', ()=>{
+            const isHidden = mobileNav.classList.contains('hidden');
+            if(isHidden){
+              mobileNav.classList.remove('hidden');
+              mobileNav.classList.add('block');
+              if(openIcon) openIcon.classList.add('hidden');
+              if(closeIcon) closeIcon.classList.remove('hidden');
+            } else {
+              mobileNav.classList.add('hidden');
+              mobileNav.classList.remove('block');
+              if(openIcon) openIcon.classList.remove('hidden');
+              if(closeIcon) closeIcon.classList.add('hidden');
+            }
+          });
+        }
+      })();
+
+      // Lightbox functionality (cycle through portfolio items with full details)
+      (function(){
+        function qs(sel){ return document.querySelector(sel); }
+        function qsa(sel){ return Array.from(document.querySelectorAll(sel)); }
+
+        const items = qsa('.portfolio-item');
+        const lightbox = qs('#lightbox');
+        const lbImg = qs('#lightbox-image');
+        const lbTitle = qs('#lightbox-title');
+        const lbDescription = qs('#lightbox-description');
+        const lbPackage = qs('#lightbox-package');
+        const lbDate = qs('#lightbox-date');
+        const lbImageCount = qs('#lightbox-image-count');
+        const lbThumbnails = qs('#lightbox-thumbnails');
+        const closeBtn = qs('#lightbox-close');
+        const prevBtn = qs('#lightbox-prev');
+        const nextBtn = qs('#lightbox-next');
+
+        let currentPortfolioIndex = 0;
+        let currentImageIndex = 0;
+        const portfolio = window.portfolioData || [];
+
+        function renderThumbnails(){
+          lbThumbnails.innerHTML = '';
+          const item = portfolio[currentPortfolioIndex];
+          if(!item || !item.images) return;
+          
+          item.images.forEach((img, idx)=>{
+            const thumb = document.createElement('img');
+            thumb.src = img;
+            thumb.className = `w-16 h-16 object-cover rounded cursor-pointer border-2 ${idx === currentImageIndex ? 'border-[color:var(--color-charcoal)]' : 'border-gray-300'}`;
+            thumb.addEventListener('click', ()=>{
+              currentImageIndex = idx;
+              updateImage();
+            });
+            lbThumbnails.appendChild(thumb);
+          });
+        }
+
+        function updateImage(){
+          const item = portfolio[currentPortfolioIndex];
+          if(!item || !item.images || currentImageIndex >= item.images.length) return;
+          lbImg.src = item.images[currentImageIndex];
+          lbImageCount.textContent = `${currentImageIndex + 1} of ${item.images.length}`;
+          renderThumbnails();
+        }
+
+        function openLightbox(portfolioIndex){
+          if(!portfolio.length || portfolioIndex < 0 || portfolioIndex >= portfolio.length) return;
+          currentPortfolioIndex = portfolioIndex;
+          currentImageIndex = 0;
+          const item = portfolio[currentPortfolioIndex];
+          
+          lbTitle.textContent = item.title || '';
+          lbDescription.textContent = item.description || '';
+          lbPackage.textContent = item.package || 'Standard';
+          lbDate.textContent = item.date || 'TBD';
+          
+          updateImage();
+          
+          lightbox.classList.remove('hidden');
+          lightbox.classList.add('flex');
+          lightbox.setAttribute('aria-hidden', 'false');
+          lightbox.style.pointerEvents = 'auto';
+          document.body.style.overflow = 'hidden';
+          
+          // Pause carousel
+          if(window.carouselAutoPlayStop) window.carouselAutoPlayStop();
+        }
+
+        function closeLightbox(){
+          lightbox.classList.add('hidden');
+          lightbox.classList.remove('flex');
+          lbImg.src = '';
+          lightbox.setAttribute('aria-hidden', 'true');
+          lightbox.style.pointerEvents = 'none';
+          document.body.style.overflow = '';
+          
+          // Resume carousel
+          if(window.carouselAutoPlayStart) window.carouselAutoPlayStart();
+        }
+
+        function showNextPortfolio(dir){
+          if(!portfolio.length) return;
+          currentPortfolioIndex = (currentPortfolioIndex + dir + portfolio.length) % portfolio.length;
+          currentImageIndex = 0;
+          openLightbox(currentPortfolioIndex);
+        }
+
+        items.forEach(btn=>{
+          btn.addEventListener('click', e=>{
+            const index = parseInt(btn.getAttribute('data-portfolio-index') || '0', 10);
+            openLightbox(index);
+          });
+        });
+
+        if(closeBtn) closeBtn.addEventListener('click', closeLightbox);
+        if(prevBtn) prevBtn.addEventListener('click', ()=> showNextPortfolio(-1));
+        if(nextBtn) nextBtn.addEventListener('click', ()=> showNextPortfolio(1));
+        
+        if(lightbox){
+          lightbox.addEventListener('click', (e)=>{
+            if(e.target === lightbox) closeLightbox();
+          });
+        }
+
+        document.addEventListener('keydown', (e)=>{
+          if(!lightbox || lightbox.classList.contains('hidden')) return;
+          if(e.key === 'Escape') closeLightbox();
+          if(e.key === 'ArrowRight') showNextPortfolio(1);
+          if(e.key === 'ArrowLeft') showNextPortfolio(-1);
+        });
+      })();
+    </script>
+  </body>
+</html>
