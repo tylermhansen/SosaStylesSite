@@ -1,0 +1,38 @@
+# Jekyll configuration for SosaStylesSite
+
+# Site settings
+title: Sosa Studios
+email: info@sosastudios.com
+description: >-
+  Bridal hair in Standish, Maine — Timeless artistry for the modern bride.
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "" # the base hostname & protocol for your site
+
+# Build settings
+markdown: kramdown
+theme: minima
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
+# Collections
+defaults:
+  - scope:
+      path: "_data/portfolio.yml"
+    values:
+      layout: default
+
+# Exclude these files from production
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+  - README.md
+  - netlify.toml
+
+# Data directory
+data_dir: _data
+
+# Permalinks
+permalink: pretty
