@@ -27,7 +27,8 @@ collections:
                 field: { label: "Image", name: "item", widget: "image" }
               - { label: "Description", name: "description", widget: "text" }
               - { label: "Package", name: "package", widget: "select", options: ["Classic", "Editorial"] }
-              - { label: "Date", name: "date", widget: "string", hint: "Format: MMMM D, YYYY (e.g., June 15, 2024)" }
+              - { label: "Date", name: "date", widget: "string", hint: "Format: [Month] [Day], [Year] (e.g., June 15, 2024)" }
+              - { label: "Photography", name: "photography", widget: "string", hint: "Who took the photos? (e.g., Jane Doe Photography)" }
 
   - name: "site"
     label: "Site Settings"

@@ -40,7 +40,7 @@ description: "Bridal hair in Standish, Maine — Timeless artistry for the moder
 								.carousel-figure { min-width: 100vw !important; width: 100vw !important; }
 							}
 						</style>
-						   <button class="portfolio-item w-full text-left" type="button" data-portfolio-index="{{ forloop.index0 }}" data-images='{{ item.images | jsonify }}' data-title="{{ item.title }}" data-description="{{ item.description }}" data-package="{{ item.package }}" data-date="{{ item.date }}">
+						   <button class="portfolio-item w-full text-left" type="button" data-portfolio-index="{{ forloop.index0 }}" data-images='{{ item.images | jsonify }}' data-title="{{ item.title }}" data-description="{{ item.description }}" data-package="{{ item.package }}" data-date="{{ item.date }}" data-photography="{{ item.photography }}">
 							   <div class="w-full h-64 overflow-hidden">
 								   <img src="{{ item.src }}" alt="{{ item.alt }}" class="w-full h-full object-cover" loading="lazy">
 							   </div>
@@ -204,4 +204,26 @@ description: "Bridal hair in Standish, Maine — Timeless artistry for the moder
 
 <script>
 	window.portfolioData = {{ site.data.portfolio.items | jsonify }};
+
+	// Patch: Add photography field to modal rendering
+	document.addEventListener('DOMContentLoaded', function() {
+		const modal = document.getElementById('lightbox');
+		if (!modal) return;
+		const lbPhotography = document.createElement('div');
+		lbPhotography.id = 'lightbox-photography';
+		lbPhotography.className = 'text-sm text-gray-500 mt-2';
+		const lbDescription = document.getElementById('lightbox-description');
+		if (lbDescription && lbDescription.parentNode) {
+			lbDescription.parentNode.insertBefore(lbPhotography, lbDescription.nextSibling);
+		}
+		// Patch the openLightbox function if it exists
+		if (typeof window.openLightbox === 'function') {
+			const origOpenLightbox = window.openLightbox;
+			window.openLightbox = function(idx) {
+				origOpenLightbox(idx);
+				const item = window.portfolioData && window.portfolioData[idx];
+				lbPhotography.textContent = item && item.photography ? `Photography: ${item.photography}` : '';
+			};
+		}
+	});
 </script>
