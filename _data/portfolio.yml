@@ -31,3 +31,22 @@ items:
       cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
       est laborum.
     photography: Example Photography Company
+  - title: Curls
+    alt: Curly hair.
+    src: https://cdn.pixabay.com/photo/2016/11/21/11/17/model-1844729_1280.jpg
+    images:
+      - https://cdn.pixabay.com/photo/2016/11/21/11/17/model-1844729_1280.jpg
+      - https://cdn.pixabay.com/photo/2018/01/13/19/26/fashion-3080626_1280.jpg
+      - https://cdn.pixabay.com/photo/2021/04/13/08/14/woman-6175010_1280.jpg
+    description: >+
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+      veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+      commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+      velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+      cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
+      est laborum.
+
+    package: Classic
+    date: August 16, 2000
+    photography: Example
