@@ -1,5 +1,6 @@
 backend:
-  name: git-gateway
+  name: github
+  repo: "<OWNER>/<REPO>" # replace with your GitHub repo, e.g. username/SosaStylesSite
   branch: main
 
 media_folder: "assets/uploads"
