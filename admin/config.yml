@@ -28,3 +28,13 @@ collections:
               - { label: "Description", name: "description", widget: "text" }
               - { label: "Package", name: "package", widget: "select", options: ["Classic", "Editorial"] }
               - { label: "Date", name: "date", widget: "string", hint: "Format: MMMM D, YYYY (e.g., June 15, 2024)" }
+
+  - name: "site"
+    label: "Site Settings"
+    files:
+      - name: "homepage"
+        label: "Homepage"
+        file: "_config.yml"
+        format: "yaml"
+        fields:
+          - { label: "Hero Image", name: "hero_image", widget: "image", hint: "Homepage hero image URL or upload." }
