@@ -108,17 +108,24 @@
           <h2 id="lightbox-title" class="font-heading text-2xl sm:text-3xl mb-3 sm:mb-4"></h2>
           
           <div class="grid grid-cols-2 gap-3 sm:gap-4 mb-4 sm:mb-6 text-xs sm:text-sm">
-            <div>
-              <p class="text-gray-600">Package</p>
-              <p id="lightbox-package" class="font-medium"></p>
-            </div>
-            <div>
-              <p class="text-gray-600">Wedding Date</p>
-              <p id="lightbox-date" class="font-medium"></p>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 w-full">
+              <div>
+                <p class="text-gray-600">Package</p>
+                <p id="lightbox-package" class="font-medium"></p>
+              </div>
+              <div>
+                <p class="text-gray-600">Wedding Date</p>
+                <p id="lightbox-date" class="font-medium"></p>
+              </div>
+              <div>
+                <p class="text-gray-600">Photography</p>
+                <p id="lightbox-photography" class="font-medium"></p>
+              </div>
             </div>
           </div>
           
-          <p id="lightbox-description" class="text-gray-700 leading-relaxed text-sm sm:text-base mb-4 sm:mb-6"></p>
+          <p id="lightbox-description" class="text-gray-700 leading-relaxed text-sm sm:text-base mb-4 sm:mb-2"></p>
+          <p id="lightbox-photography" class="text-xs text-gray-500 mb-4 sm:mb-6"></p>
           
           <!-- Additional image thumbnails -->
           <div id="lightbox-thumbnails" class="flex gap-2 pb-2 overflow-x-auto"></div>
@@ -249,6 +256,10 @@
           lbDescription.textContent = item.description || '';
           lbPackage.textContent = item.package || 'Standard';
           lbDate.textContent = item.date || 'TBD';
+          const lbPhotography = document.getElementById('lightbox-photography');
+          if(lbPhotography) {
+            lbPhotography.textContent = item.photography || '';
+          }
           
           updateImage();
           
