@@ -5,29 +5,23 @@ backend:
 media_folder: assets/uploads
 public_folder: /assets/uploads
 
-# collections:
-#   - name: portfolio
-#     label: Portfolio Items
-#     folder: _data
-#     create: false
-#     extension: yml
-#     format: yaml
-#     files:
-#       - name: portfolio
-#         label: Portfolio
-#         file: _data/portfolio.yml
-#         fields:
-#           - name: root
-#             label: Items
-#             widget: list
-#             fields:
-#               - { label: "Title", name: "title", widget: "string" }
-#               - { label: "Alt Text", name: "alt", widget: "string" }
-#               - { label: "Featured Image", name: "src", widget: "image" }
-#               - label: "Gallery Images"
-#                 name: "images"
-#                 widget: "list"
-#                 field: { label: "Image", name: "item", widget: "image" }
-#               - { label: "Description", name: "description", widget: "text" }
-#               - { label: "Package", name: "package", widget: "select", options: ["Classic", "Editorial"] }
-#               - { label: "Date", name: "date", widget: "string", hint: "Format: MMMM D, YYYY (e.g., June 15, 2024)" }
+collections:
+  - name: "portfolio"
+    label: "Portfolio"
+    file: "_data/portfolio.yml"
+    format: "yaml"
+    fields:
+      - label: "Portfolio Items"
+        name: "items"
+        widget: list
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Alt Text", name: "alt", widget: "string" }
+          - { label: "Featured Image", name: "src", widget: "image" }
+          - label: "Gallery Images"
+            name: "images"
+            widget: list
+            field: { label: "Image", name: "item", widget: "image" }
+          - { label: "Description", name: "description", widget: "text" }
+          - { label: "Package", name: "package", widget: "select", options: ["Classic", "Editorial"] }
+          - { label: "Date", name: "date", widget: "string", hint: "Format: MMMM D, YYYY (e.g., June 15, 2024)" }
