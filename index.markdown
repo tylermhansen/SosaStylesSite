@@ -30,10 +30,16 @@ description: "Bridal hair in Standish, Maine — Timeless artistry for the moder
 		<h2 class="font-heading text-2xl mb-6">Featured Work</h2>
 		<div class="relative">
 			<!-- Carousel container -->
-			<div class="overflow-hidden">
-				   <div id="carousel" class="flex gap-6 transition-transform duration-500">
+			     <div class="overflow-hidden">
+					   <div id="carousel" class="flex gap-6 transition-transform duration-500">
 					   {% for item in site.data.portfolio.items %}
-					   <figure class="w-full sm:w-1/2 lg:w-1/3 flex-shrink-0 overflow-hidden rounded-lg bg-white shadow-sm">
+					   <figure class="carousel-figure w-full sm:w-1/2 lg:w-1/3 flex-shrink-0 overflow-hidden rounded-lg bg-white shadow-sm">
+						<style>
+							@media (max-width: 639px) {
+								#carousel { gap: 0 !important; }
+								.carousel-figure { min-width: 100vw !important; width: 100vw !important; }
+							}
+						</style>
 						   <button class="portfolio-item w-full text-left" type="button" data-portfolio-index="{{ forloop.index0 }}" data-images='{{ item.images | jsonify }}' data-title="{{ item.title }}" data-description="{{ item.description }}" data-package="{{ item.package }}" data-date="{{ item.date }}">
 							   <div class="w-full h-64 overflow-hidden">
 								   <img src="{{ item.src }}" alt="{{ item.alt }}" class="w-full h-full object-cover" loading="lazy">
