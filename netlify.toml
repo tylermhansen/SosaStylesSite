@@ -1,0 +1,10 @@
+# Netlify configuration - disable Netlify auth for GitHub-hosted site
+# This prevents Netlify CMS from trying to use Netlify's auth backend
+
+[build]
+  publish = "_site"
+  command = "bundle exec jekyll build"
+
+[context.production]
+  # Use GitHub backend for CMS, not Netlify
+  environment = { NETLIFY_CMS_BACKEND = "github" }
