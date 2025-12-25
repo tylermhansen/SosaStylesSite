@@ -8,20 +8,23 @@ public_folder: /assets/uploads
 collections:
   - name: "portfolio"
     label: "Portfolio"
-    file: "_data/portfolio.yml"
-    format: "yaml"
-    fields:
-      - label: "Portfolio Items"
-        name: "items"
-        widget: list
+    files:
+      - name: "portfolio"
+        label: "Portfolio Items"
+        file: "_data/portfolio.yml"
+        format: "yaml"
         fields:
-          - { label: "Title", name: "title", widget: "string" }
-          - { label: "Alt Text", name: "alt", widget: "string" }
-          - { label: "Featured Image", name: "src", widget: "image" }
-          - label: "Gallery Images"
-            name: "images"
+          - label: "Portfolio Items"
+            name: "items"
             widget: list
-            field: { label: "Image", name: "item", widget: "image" }
-          - { label: "Description", name: "description", widget: "text" }
-          - { label: "Package", name: "package", widget: "select", options: ["Classic", "Editorial"] }
-          - { label: "Date", name: "date", widget: "string", hint: "Format: MMMM D, YYYY (e.g., June 15, 2024)" }
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Alt Text", name: "alt", widget: "string" }
+              - { label: "Featured Image", name: "src", widget: "image" }
+              - label: "Gallery Images"
+                name: "images"
+                widget: list
+                field: { label: "Image", name: "item", widget: "image" }
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "Package", name: "package", widget: "select", options: ["Classic", "Editorial"] }
+              - { label: "Date", name: "date", widget: "string", hint: "Format: MMMM D, YYYY (e.g., June 15, 2024)" }
