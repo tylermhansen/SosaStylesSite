@@ -50,3 +50,22 @@ items:
     package: Classic
     date: August 16, 2000
     photography: Example
+  - title: Floral Braids
+    alt: Flowers in braided hair.
+    src: https://images.pexels.com/photos/355063/pexels-photo-355063.jpeg
+    images:
+      - https://images.pexels.com/photos/355063/pexels-photo-355063.jpeg
+      - https://images.pexels.com/photos/973401/pexels-photo-973401.jpeg
+      - https://images.pexels.com/photos/285284/pexels-photo-285284.jpeg
+    description: >+
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+      veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+      commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+      velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+      cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
+      est laborum.
+
+    package: Editorial
+    date: December 25, 2025
+    photography: Miss Mae Pics
