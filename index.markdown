@@ -177,13 +177,21 @@ description: "Bridal hair in Standish, Maine — Timeless artistry for the moder
 		<h2 class="font-heading text-3xl mb-4">Contact</h2>
 		<p class="mb-6 text-gray-700">For inquiries and bookings, please email <a href="mailto:{{ site.social.email }}" class="underline hover:no-underline">{{ site.social.email }}</a> or use the details below to schedule a consultation.</p>
 
-		<div class="bg-[color:var(--color-cream)] p-6 rounded-md shadow-sm border border-gray-200">
+		<div class="bg-[color:var(--color-cream)] p-6 rounded-md shadow-sm border border-gray-200 mb-8">
 			<p class="mb-2"><strong>Location:</strong> {{ site.brand.location }}</p>
 			<p class="mb-4"><strong>Studio:</strong> Sosa Studios</p>
-
 			<p class="mb-4 text-sm text-gray-700">To request availability, please send a message with your wedding date, venue, and style inspiration. For faster response, include images if you have them.</p>
-
 			<a href="mailto:{{ site.social.email }}?subject=Consultation%20Request" class="inline-block bg-[color:var(--color-champagne)] text-[color:var(--color-charcoal)] font-medium py-2 px-4 rounded hover:opacity-90 transition">Email to Book</a>
+		</div>
+
+		<!-- Google Calendar Embed -->
+		<div class="mb-8">
+			<h3 class="font-heading text-xl mb-2">Availability Calendar</h3>
+			<div class="aspect-w-16 aspect-h-9 w-full max-w-full rounded overflow-hidden border border-gray-200 bg-white">
+				<!-- Replace the src below with your Google Calendar embed link -->
+				<iframe src="https://calendar.google.com/calendar/embed?src=4214a32d5074dc131361bdc147daba95cc6559b6a2bd0751ea4d154eafdb9d5b%40group.calendar.google.com&ctz=America%2FNew_York" style="border: 0" width="100%" height="450" frameborder="0" scrolling="no" allowfullscreen title="Google Calendar"></iframe>
+			</div>
+			<p class="text-xs text-gray-500 mt-2">This calendar shows available and booked dates. Please refresh for the latest updates.</p>
 		</div>
 	</div>
 </section>
