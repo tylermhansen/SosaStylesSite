@@ -4,10 +4,35 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="robots" content="noindex" />
-    <meta name="netlify-cms-backend" content="github" />
     <title>Sosa Studios — Content Manager</title>
   </head>
   <body>
     <script src="https://unpkg.com/netlify-cms@^2.10.192/dist/netlify-cms.js"></script>
+    <script>
+      // Simple GitHub token auth for GitHub Pages
+      // Add your token to localStorage: localStorage.setItem('git_gateway_token', 'your_token_here')
+      if (window.netlifyIdentity) {
+        window.netlifyIdentity.on('init', user => {
+          if (!user) {
+            window.netlifyIdentity.open();
+          }
+        });
+      }
+      // Enable GitHub backend with token from localStorage
+      if (window.CMS) {
+        window.CMS.registerBackend('github', {
+          init: () => Promise.resolve(),
+          authenticate: () => {
+            const token = localStorage.getItem('git_gateway_token');
+            if (!token) {
+              const t = prompt('Enter your GitHub Personal Access Token (from https://github.com/settings/tokens):\nScopes: repo, user:email');
+              if (t) localStorage.setItem('git_gateway_token', t);
+            }
+            return Promise.resolve();
+          },
+          getToken: () => localStorage.getItem('git_gateway_token')
+        });
+      }
+    </script>
   </body>
 </html>

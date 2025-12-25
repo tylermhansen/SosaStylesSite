@@ -2,6 +2,11 @@ backend:
   name: github
   repo: tylermhansen/SosaStylesSite
   branch: main
+  # For local testing or if using personal access token approach
+  # (You can manually set this in browser localStorage instead)
+
+auth:
+  endpoint: /auth
 
 media_folder: assets/uploads
 public_folder: /assets/uploads
