@@ -7,32 +7,38 @@
     <title>Sosa Studios — Content Manager</title>
   </head>
   <body>
-    <script src="https://unpkg.com/netlify-cms@^2.10.192/dist/netlify-cms.js"></script>
+    <script src="https://unpkg.com/decap-cms-app@latest"></script>
     <script>
-      // Simple GitHub token auth for GitHub Pages
-      // Add your token to localStorage: localStorage.setItem('git_gateway_token', 'your_token_here')
-      if (window.netlifyIdentity) {
-        window.netlifyIdentity.on('init', user => {
-          if (!user) {
-            window.netlifyIdentity.open();
-          }
-        });
-      }
-      // Enable GitHub backend with token from localStorage
-      if (window.CMS) {
-        window.CMS.registerBackend('github', {
-          init: () => Promise.resolve(),
-          authenticate: () => {
-            const token = localStorage.getItem('git_gateway_token');
-            if (!token) {
-              const t = prompt('Enter your GitHub Personal Access Token (from https://github.com/settings/tokens):\nScopes: repo, user:email');
-              if (t) localStorage.setItem('git_gateway_token', t);
+      // Decap CMS with GitHub Personal Access Token
+      // Prompts for token on first load, stores in localStorage
+      document.addEventListener('DOMContentLoaded', () => {
+        const getToken = () => {
+          let token = localStorage.getItem('decap_github_token');
+          if (!token) {
+            token = prompt(
+              'Enter your GitHub Personal Access Token\n\n' +
+              'Create one at: https://github.com/settings/tokens\n' +
+              'Scopes needed: repo, user:email\n\n' +
+              'Token will be saved to localStorage (secure in your browser only)'
+            );
+            if (token) {
+              localStorage.setItem('decap_github_token', token);
             }
-            return Promise.resolve();
-          },
-          getToken: () => localStorage.getItem('git_gateway_token')
-        });
-      }
+          }
+          return token;
+        };
+
+        // Register custom GitHub backend with token
+        if (window.CMS) {
+          window.CMS.registerBackend('github', window.DecapCmsBackendGithub);
+          
+          // Override token retrieval
+          const token = getToken();
+          if (token) {
+            window.CMS.Backend.getBackend('github').authToken = token;
+          }
+        }
+      });
     </script>
   </body>
 </html>
