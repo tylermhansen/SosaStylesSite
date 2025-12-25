@@ -1,6 +1,6 @@
 backend:
   name: github
-  repo: "<OWNER>/<REPO>" # replace with your GitHub repo, e.g. username/SosaStylesSite
+  repo: "tylermhansen/SosaStylesSite"
   branch: main
 
 media_folder: "assets/uploads"
@@ -9,14 +9,27 @@ public_folder: "/assets/uploads"
 collections:
   - name: "portfolio"
     label: "Portfolio"
-    folder: "_data"
-    create: true
     extension: "yml"
     format: "yaml"
-    fields:
-      - { label: "Title", name: "title", widget: "string" }
-      - { label: "Image path", name: "src", widget: "string", hint: "Path relative to site root, e.g. /assets/portfolio/romantic-waves.svg" }
-      - { label: "Alt text", name: "alt", widget: "string" }
+    files:
+      - label: "Portfolio Items"
+        name: "portfolio"
+        file: "_data/portfolio.yml"
+        fields:
+          - label: "Portfolio Items"
+            name: "root"
+            widget: "list"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Alt text", name: "alt", widget: "string" }
+              - { label: "Main Image Path", name: "src", widget: "string", hint: "e.g. /assets/portfolio/image.jpg" }
+              - label: "Gallery Images"
+                name: "images"
+                widget: "list"
+                field: { label: "Image URL", name: "item", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "Package Type", name: "package", widget: "select", options: ["Classic", "Editorial"] }
+              - { label: "Date", name: "date", widget: "string", hint: "e.g. June 15, 2024" }
 
   - name: "pages"
     label: "Pages (single files)"
