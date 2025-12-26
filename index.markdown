@@ -152,19 +152,17 @@ description: {{ site.page_description | default: 'Bridal hair in Standish, Maine
 </section>
 
 <section id="day-of" class="py-20 bg-[color:var(--color-cream)]">
-	<div class="container mx-auto px-6 max-w-3xl">
-		<h2 class="font-heading text-3xl mb-4">Day Of — Example Timeline</h2>
+			 <div class="container mx-auto px-6 max-w-3xl">
+					 <h2 class="font-heading text-3xl mb-4">Day Of — Example Timeline</h2>
 
-		<ol class="list-decimal ml-6 space-y-4 text-gray-700">
-			<li><strong>8:00 AM</strong> — Arrival and setup at venue or preparation location.</li>
-			<li><strong>8:30 AM</strong> — Begin bridal party styling (hair only) — bridesmaids and family.</li>
-			<li><strong>10:30 AM</strong> — Bridal trial/style touch and veil placement.</li>
-			<li><strong>11:00 AM</strong> — Final checks, touch-ups, and photography prep.</li>
-			<li><strong>12:00 PM</strong> — Ceremony styling complete; on-call for touch-ups.</li>
-		</ol>
+					 <ol class="list-decimal ml-6 space-y-4 text-gray-700">
+						 {% for item in site.example_timeline %}
+							 <li><strong>{{ item.time }}</strong> — {{ item.activity }}</li>
+						 {% endfor %}
+					 </ol>
 
-		<p class="mt-6 text-sm text-gray-600">This timeline is illustrative. Exact scheduling depends on guest count, travel time, and services booked.</p>
-	</div>
+					 <p class="mt-6 text-sm text-gray-600">This timeline is illustrative. Exact scheduling depends on guest count, travel time, and services booked.</p>
+			 </div>
 </section>
 
 <section id="contact" class="py-20 bg-white">

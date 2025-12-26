@@ -73,3 +73,16 @@ investment_packages:
       - Trial session
       - Bridal + party styling
       - Travel & on-site support
+
+# Example Timeline (editable from CMS)
+example_timeline:
+  - time: "8:00 AM"
+    activity: "Arrival and setup at venue or preparation location."
+  - time: "8:30 AM"
+    activity: "Begin bridal party styling (hair only) — bridesmaids and family."
+  - time: "10:30 AM"
+    activity: "Bridal trial/style touch and veil placement."
+  - time: "11:00 AM"
+    activity: "Final checks, touch-ups, and photography prep."
+  - time: "12:00 PM"
+    activity: "Ceremony styling complete; on-call for touch-ups."

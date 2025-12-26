@@ -38,30 +38,67 @@ collections:
         file: "_config.yml"
         format: "yaml"
         fields:
-          - { label: "Site Title", name: "title", widget: "string" }
-          - { label: "Page Title", name: "page_title", widget: "string" }
-          - { label: "Page Description", name: "page_description", widget: "text" }
-          - { label: "Hero Image", name: "hero_image", widget: "image", hint: "Homepage hero image URL or upload." }
-          - { label: "Hero Title", name: "hero_title", widget: "string" }
-          - { label: "Hero Subtitle", name: "hero_subtitle", widget: "string" }
-          - { label: "Hero CTA", name: "hero_cta", widget: "string" }
-          - { label: "Section 1 Title", name: "section1_title", widget: "string" }
-          - { label: "Section 1 Text", name: "section1_text", widget: "text" }
-          - { label: "Featured Title", name: "featured_title", widget: "string" }
-          - { label: "About Title", name: "about_title", widget: "string" }
-          - { label: "About Text", name: "about_text", widget: "text" }
-          - { label: "Investment Title", name: "investment_title", widget: "string" }
 
-          # --- Investment Packages ---
-          - label: "Investment Packages"
-            name: "investment_packages"
-            widget: "list"
-            summary: "{{fields.name}}"
+          # --- General Site Copy ---
+          - label: "General Site Copy"
+            name: "site_copy"
+            widget: "object"
             fields:
-              - { label: "Package Name", name: "name", widget: "string" }
-              - { label: "Description", name: "description", widget: "text" }
-              - { label: "Price", name: "price", widget: "string", required: false }
-              - { label: "Features", name: "features", widget: "list", field: { label: "Feature", name: "feature", widget: "string" } }
+              - { label: "Site Title", name: "title", widget: "string" }
+              - { label: "Page Title", name: "page_title", widget: "string" }
+              - { label: "Page Description", name: "page_description", widget: "text" }
+              - { label: "Featured Title", name: "featured_title", widget: "string" }
+
+          # --- Hero Section ---
+          - label: "Hero Section"
+            name: "hero"
+            widget: "object"
+            fields:
+              - { label: "Hero Image", name: "hero_image", widget: "image", hint: "Homepage hero image URL or upload." }
+              - { label: "Hero Title", name: "hero_title", widget: "string" }
+              - { label: "Hero Subtitle", name: "hero_subtitle", widget: "string" }
+              - { label: "Hero CTA", name: "hero_cta", widget: "string" }
+
+          # --- Section 1 ---
+          - label: "Section 1"
+            name: "section1"
+            widget: "object"
+            fields:
+              - { label: "Section 1 Title", name: "section1_title", widget: "string" }
+              - { label: "Section 1 Text", name: "section1_text", widget: "text" }
+
+          # --- About Section ---
+          - label: "About Section"
+            name: "about"
+            widget: "object"
+            fields:
+              - { label: "About Title", name: "about_title", widget: "string" }
+              - { label: "About Text", name: "about_text", widget: "text" }
+
+          # --- Investment Section ---
+          - label: "Investment Section"
+            name: "investment"
+            widget: "object"
+            fields:
+              - { label: "Investment Title", name: "investment_title", widget: "string" }
+              - label: "Investment Packages"
+                name: "investment_packages"
+                widget: "list"
+                summary: "{{fields.name}}"
+                fields:
+                  - { label: "Package Name", name: "name", widget: "string" }
+                  - { label: "Description", name: "description", widget: "text" }
+                  - { label: "Price", name: "price", widget: "string", required: false }
+                  - { label: "Features", name: "features", widget: "list", field: { label: "Feature", name: "feature", widget: "string" } }
+
+          # --- Example Timeline ---
+          - label: "Example Timeline"
+            name: "example_timeline"
+            widget: "list"
+            summary: "{{fields.time}} — {{fields.activity}}"
+            fields:
+              - { label: "Time", name: "time", widget: "string" }
+              - { label: "Activity", name: "activity", widget: "string" }
 
           # --- Brand Section ---
           - label: "Brand Settings"
