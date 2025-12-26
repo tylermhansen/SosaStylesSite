@@ -3,31 +3,31 @@
 # To modify the layout, see https://jekyllrb.com/docs/themes/#overriding-theme-defaults
 
 layout: default
-title: Home
-description: "Bridal hair in Standish, Maine — Timeless artistry for the modern bride."
+title: {{ site.page_title | default: 'Sosa Studios' }}
+description: {{ site.page_description | default: 'Bridal hair in Standish, Maine — Timeless artistry for the modern bride.' }}
 ---
  
 <section id="home" class="relative w-full h-[70vh] lg:h-[80vh] bg-cover bg-center" style="background-image: url('{{ site.hero_image }}')">
 	<div class="absolute inset-0" style="background: linear-gradient(rgba(0,0,0,0.25), rgba(0,0,0,0.25));"></div>
 	<div class="relative z-10 flex items-center justify-center h-full">
 		<div class="text-center max-w-3xl px-6">
-			<h1 class="font-heading text-white text-4xl sm:text-5xl md:text-6xl tracking-tight">Timeless Artistry for the Modern Bride</h1>
-			<p class="mt-4 text-sm text-white/90">Sosa Studios — Bridal Hair in Standish, Maine</p>
-			<a href="/#contact" class="mt-8 inline-block bg-[color:var(--color-champagne)] text-[color:var(--color-charcoal)] font-medium py-3 px-6 rounded-md shadow-sm">Book a Consultation</a>
+			<h1 class="font-heading text-white text-4xl sm:text-5xl md:text-6xl tracking-tight">{{ site.hero_title | default: 'Timeless Artistry for the Modern Bride' }}</h1>
+			<p class="mt-4 text-sm text-white/90">{{ site.hero_subtitle | default: 'Sosa Studios — Bridal Hair in Standish, Maine' }}</p>
+			<a href="/#contact" class="mt-8 inline-block bg-[color:var(--color-champagne)] text-[color:var(--color-charcoal)] font-medium py-3 px-6 rounded-md shadow-sm">{{ site.hero_cta | default: 'Book a Consultation' }}</a>
 		</div>
 	</div>
 </section>
 
 <section class="py-16">
 	<div class="container mx-auto px-6 text-center">
-		<p class="font-heading text-2xl md:text-3xl text-[color:var(--color-charcoal)]">Timeless Artistry for the Modern Bride</p>
-		<p class="mt-4 max-w-2xl mx-auto text-gray-700">We create editorial, refined bridal hairstyles that photograph beautifully and last all day.</p>
+		<p class="font-heading text-2xl md:text-3xl text-[color:var(--color-charcoal)]">{{ site.section1_title | default: 'Timeless Artistry for the Modern Bride' }}</p>
+		<p class="mt-4 max-w-2xl mx-auto text-gray-700">{{ site.section1_text | default: 'We create editorial, refined bridal hairstyles that photograph beautifully and last all day.' }}</p>
 	</div>
 </section>
 
 <section id="featured" class="py-12 bg-white">
 	<div class="container mx-auto px-6">
-		<h2 class="font-heading text-2xl mb-6">Featured Work</h2>
+		<h2 class="font-heading text-2xl mb-6">{{ site.featured_title | default: 'Featured Work' }}</h2>
 		<div class="relative">
 			<!-- Carousel container -->
 			<div class="overflow-x-scroll sm:overflow-hidden snap-x snap-mandatory">
@@ -121,14 +121,14 @@ description: "Bridal hair in Standish, Maine — Timeless artistry for the moder
 
 <section id="about" class="py-20 bg-[color:var(--color-cream)]">
 	<div class="container mx-auto px-6 max-w-3xl">
-		<h2 class="font-heading text-3xl mb-4">About</h2>
-		<p class="text-gray-700">Every bride deserves a stylist who is as invested in the vision as they are. I’m Nadia, but most people call me Lulu. After graduating from Lowell Academy, I brought my shears home to Standish, Maine, where I’ve been crafting custom looks at Tangles Hair Salon. I am a dual-licensed stylist in Maine and Massachusetts, which means I’m always on the move, bringing luxury bridal hair to women across New England. For me, it’s about more than just the perfect curl; it’s about the confidence you feel when you step into your dress. I can’t wait to help you find your "Sosa Studio" look.</p>
+		<h2 class="font-heading text-3xl mb-4">{{ site.about_title | default: 'About' }}</h2>
+		<p class="text-gray-700">{{ site.about_text | default: 'Every bride deserves a stylist who is as invested in the vision as they are. After graduating from Lowell Academy, I brought my shears home to Standish, Maine, where I’ve been crafting custom looks at Tangles Hair Salon. I am a dual-licensed stylist in Maine and Massachusetts, which means I’m always on the move, bringing luxury bridal hair to women across New England. For me, it’s about more than just the perfect curl; it’s about the confidence you feel when you step into your dress. I can’t wait to help you find your "Sosa Studio" look.' }}</p>
 	</div>
 </section>
 
 <section id="investment" class="py-20 bg-white">
 	<div class="container mx-auto px-6 max-w-3xl">
-		<h2 class="font-heading text-3xl mb-6">Investment</h2>
+		<h2 class="font-heading text-3xl mb-6">{{ site.investment_title | default: 'Investment' }}</h2>
 
 		<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 			<div class="p-6 border border-gray-200 rounded-md bg-white">

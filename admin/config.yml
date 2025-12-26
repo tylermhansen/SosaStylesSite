@@ -38,4 +38,16 @@ collections:
         file: "_config.yml"
         format: "yaml"
         fields:
+          - { label: "Site Title", name: "title", widget: "string" }
+          - { label: "Page Title", name: "page_title", widget: "string" }
+          - { label: "Page Description", name: "page_description", widget: "text" }
           - { label: "Hero Image", name: "hero_image", widget: "image", hint: "Homepage hero image URL or upload." }
+          - { label: "Hero Title", name: "hero_title", widget: "string" }
+          - { label: "Hero Subtitle", name: "hero_subtitle", widget: "string" }
+          - { label: "Hero CTA", name: "hero_cta", widget: "string" }
+          - { label: "Section 1 Title", name: "section1_title", widget: "string" }
+          - { label: "Section 1 Text", name: "section1_text", widget: "text" }
+          - { label: "Featured Title", name: "featured_title", widget: "string" }
+          - { label: "About Title", name: "about_title", widget: "string" }
+          - { label: "About Text", name: "about_text", widget: "text" }
+          - { label: "Investment Title", name: "investment_title", widget: "string" }

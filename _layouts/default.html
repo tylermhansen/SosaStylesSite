@@ -12,7 +12,6 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>{{ page.title | default: site.seo.title }}</title>
-    <meta name="description" content="{{ page.description | default: site.seo.description }}">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -128,7 +127,11 @@
           <p id="lightbox-photography" class="text-xs text-gray-500 mb-4 sm:mb-6"></p>
           
           <!-- Additional image thumbnails -->
-          <div id="lightbox-thumbnails" class="flex gap-2 pb-2 overflow-x-auto"></div>
+          <div class="relative">
+            <button id="thumb-prev" class="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white/80 rounded-full p-1 shadow block sm:hidden" aria-label="Previous thumbnail">&#8592;</button>
+            <div id="lightbox-thumbnails" class="flex gap-2 pb-2 pr-2 justify-center sm:overflow-visible"></div>
+            <button id="thumb-next" class="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white/80 rounded-full p-1 shadow block sm:hidden" aria-label="Next thumbnail">&#8594;</button>
+          </div>
         </div>
       </div>
       
@@ -225,17 +228,55 @@
           lbThumbnails.innerHTML = '';
           const item = portfolio[currentPortfolioIndex];
           if(!item || !item.images) return;
-          
-          item.images.forEach((img, idx)=>{
+          if(window.innerWidth < 640) {
+            // Only render the current image as a thumbnail, centered
             const thumb = document.createElement('img');
-            thumb.src = img;
-            thumb.className = `w-16 h-16 object-cover rounded cursor-pointer border-2 ${idx === currentImageIndex ? 'border-[color:var(--color-charcoal)]' : 'border-gray-300'}`;
-            thumb.addEventListener('click', ()=>{
-              currentImageIndex = idx;
-              updateImage();
-            });
+            thumb.src = item.images[currentImageIndex];
+            thumb.className = `w-16 h-16 object-cover rounded border-2 border-[color:var(--color-charcoal)] mx-auto`;
             lbThumbnails.appendChild(thumb);
-          });
+          } else {
+            // Render all thumbnails for desktop
+            item.images.forEach((img, idx)=>{
+              const thumb = document.createElement('img');
+              thumb.src = img;
+              thumb.className = `w-16 h-16 object-cover rounded cursor-pointer border-2 ${idx === currentImageIndex ? 'border-[color:var(--color-charcoal)]' : 'border-gray-300'}`;
+              thumb.addEventListener('click', ()=>{
+                currentImageIndex = idx;
+                updateImage();
+              });
+              lbThumbnails.appendChild(thumb);
+            });
+          }
+              // Mobile thumbnail navigation (centered, one at a time)
+              document.addEventListener('DOMContentLoaded', function() {
+                const prevBtn = document.getElementById('thumb-prev');
+                const nextBtn = document.getElementById('thumb-next');
+                function updateThumbNav() {
+                  const item = window.portfolioData ? window.portfolioData[window.currentPortfolioIndex] : null;
+                  if(!item || !item.images) return;
+                  prevBtn.style.display = (window.innerWidth < 640 && window.currentImageIndex > 0) ? '' : 'none';
+                  nextBtn.style.display = (window.innerWidth < 640 && window.currentImageIndex < item.images.length - 1) ? '' : 'none';
+                }
+                window.addEventListener('resize', updateThumbNav);
+                if(prevBtn && nextBtn) {
+                  prevBtn.addEventListener('click', function() {
+                    if(window.currentImageIndex > 0) {
+                      window.currentImageIndex--;
+                      window.updateImage();
+                      updateThumbNav();
+                    }
+                  });
+                  nextBtn.addEventListener('click', function() {
+                    const item = window.portfolioData ? window.portfolioData[window.currentPortfolioIndex] : null;
+                    if(item && window.currentImageIndex < item.images.length - 1) {
+                      window.currentImageIndex++;
+                      window.updateImage();
+                      updateThumbNav();
+                    }
+                  });
+                }
+                updateThumbNav();
+              });
         }
 
         function updateImage(){

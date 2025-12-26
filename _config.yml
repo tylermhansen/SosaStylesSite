@@ -23,3 +23,17 @@ exclude:
 email: info@sosastudios.com
 description: Bridal hair in Standish, Maine — Timeless artistry for the modern bride.
 baseurl: ""
+
+# Editable site copy fields for CDN dashboard
+page_title: Sosa Studios
+page_description: Bridal hair in Standish, Maine — Timeless artistry for the modern bride.
+hero_title: Timeless Artistry for the Modern Bride
+hero_subtitle: Sosa Studios — Bridal Hair in Standish, Maine
+hero_cta: Book a Consultation
+section1_title: Timeless Artistry for the Modern Bride
+section1_text: We create editorial, refined bridal hairstyles that photograph beautifully and last all day.
+featured_title: Featured Work
+about_title: About
+about_text: >
+  Every bride deserves a stylist who is as invested in the vision as they are. After graduating from Lowell Academy, I brought my shears home to Standish, Maine, where I’ve been crafting custom looks at Tangles Hair Salon. I am a dual-licensed stylist in Maine and Massachusetts, which means I’m always on the move, bringing luxury bridal hair to women across New England. For me, it’s about more than just the perfect curl; it’s about the confidence you feel when you step into your dress. I can’t wait to help you find your "Sosa Studio" look.
+investment_title: Investment
