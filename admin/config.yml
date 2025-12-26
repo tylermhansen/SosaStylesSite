@@ -52,6 +52,13 @@ collections:
           - { label: "About Text", name: "about_text", widget: "text" }
           - { label: "Investment Title", name: "investment_title", widget: "string" }
 
+          # --- SEO Section ---
+          - label: "SEO Settings"
+            name: "seo"
+            widget: "object"
+            fields:
+              - { label: "SEO Title", name: "title", widget: "string" }
+
           # --- Brand Section ---
           - label: "Brand Settings"
             name: "brand"
