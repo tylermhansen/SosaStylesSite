@@ -175,11 +175,8 @@ description: {{ site.page_description | default: 'Bridal hair in Standish, Maine
 <section id="contact" class="py-20 bg-white">
 	<div class="container mx-auto px-6 max-w-2xl">
 		<h2 class="font-heading text-3xl mb-4">Contact</h2>
-		<p class="mb-6 text-gray-700">For inquiries and bookings, please email <a href="mailto:{{ site.social.email }}" class="underline hover:no-underline">{{ site.social.email }}</a> or use the details below to schedule a consultation.</p>
 
 		<div class="bg-[color:var(--color-cream)] p-6 rounded-md shadow-sm border border-gray-200 mb-8">
-			<p class="mb-2"><strong>Location:</strong> {{ site.brand.location }}</p>
-			<p class="mb-4"><strong>Studio:</strong> Sosa Studios</p>
 			<p class="mb-4 text-sm text-gray-700">To request availability, please send a message with your wedding date, venue, and style inspiration. For faster response, include images if you have them.</p>
 			<a href="mailto:{{ site.social.email }}?subject=Consultation%20Request" class="inline-block bg-[color:var(--color-champagne)] text-[color:var(--color-charcoal)] font-medium py-2 px-4 rounded hover:opacity-90 transition">Email to Book</a>
 		</div>
