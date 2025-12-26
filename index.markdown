@@ -127,33 +127,28 @@ description: {{ site.page_description | default: 'Bridal hair in Standish, Maine
 </section>
 
 <section id="investment" class="py-20 bg-white">
-	<div class="container mx-auto px-6 max-w-3xl">
-		<h2 class="font-heading text-3xl mb-6">{{ site.investment_title | default: 'Investment' }}</h2>
+			 <div class="container mx-auto px-6 max-w-3xl">
+					 <h2 class="font-heading text-3xl mb-6">{{ site.investment_title | default: 'Investment' }}</h2>
 
-		<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-			<div class="p-6 border border-gray-200 rounded-md bg-white">
-				<h3 class="font-heading text-xl mb-2">Classic</h3>
-				<p class="mb-4 text-gray-700">Starting at $200 — Trial (optional) + Bridal styling for ceremony day. Ideal for intimate ceremonies and elopements.</p>
-				<ul class="text-sm text-gray-600 space-y-1">
-					<li>✓ Consultation</li>
-					<li>✓ On-site styling</li>
-					<li>✓ Light touch-ups</li>
-				</ul>
-			</div>
+					 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+						 {% for pkg in site.investment_packages %}
+							 <div class="p-6 border border-gray-200 rounded-md bg-white">
+								 <h3 class="font-heading text-xl mb-2">{{ pkg.name }}</h3>
+								 {% if pkg.price %}<p class="mb-2 text-gray-700 font-semibold">{{ pkg.price }}</p>{% endif %}
+								 <p class="mb-4 text-gray-700">{{ pkg.description }}</p>
+								 {% if pkg.features %}
+								 <ul class="text-sm text-gray-600 space-y-1">
+									 {% for feature in pkg.features %}
+										 <li>✓ {{ feature }}</li>
+									 {% endfor %}
+								 </ul>
+								 {% endif %}
+							 </div>
+						 {% endfor %}
+					 </div>
 
-			<div class="p-6 border border-gray-200 rounded-md bg-white">
-				<h3 class="font-heading text-xl mb-2">Editorial</h3>
-				<p class="mb-4 text-gray-700">Starting at $350 — Includes trial session and full-day support. Perfect for editorial looks and multi-person styling.</p>
-				<ul class="text-sm text-gray-600 space-y-1">
-					<li>✓ Trial session</li>
-					<li>✓ Bridal + party styling</li>
-					<li>✓ Travel & on-site support</li>
-				</ul>
-			</div>
-		</div>
-
-		<p class="mt-6 text-sm text-gray-600">All packages are examples. For an accurate quote, please inquire with your wedding date, guest count, and location.</p>
-	</div>
+					 <p class="mt-6 text-sm text-gray-600">All packages are examples. For an accurate quote, please inquire with your wedding date, guest count, and location.</p>
+			 </div>
 </section>
 
 <section id="day-of" class="py-20 bg-[color:var(--color-cream)]">

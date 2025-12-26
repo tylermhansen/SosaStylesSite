@@ -52,6 +52,17 @@ collections:
           - { label: "About Text", name: "about_text", widget: "text" }
           - { label: "Investment Title", name: "investment_title", widget: "string" }
 
+          # --- Investment Packages ---
+          - label: "Investment Packages"
+            name: "investment_packages"
+            widget: "list"
+            summary: "{{fields.name}}"
+            fields:
+              - { label: "Package Name", name: "name", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "Price", name: "price", widget: "string", required: false }
+              - { label: "Features", name: "features", widget: "list", field: { label: "Feature", name: "feature", widget: "string" } }
+
           # --- Brand Section ---
           - label: "Brand Settings"
             name: "brand"

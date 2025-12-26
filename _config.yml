@@ -56,3 +56,20 @@ exclude:
 email: info@sosastudios.com
 description: Bridal hair in Standish, Maine — Timeless artistry for the modern bride.
 baseurl: ""
+
+# Investment packages (editable from CMS)
+investment_packages:
+  - name: Classic
+    description: "Starting at $200 — Trial (optional) + Bridal styling for ceremony day. Ideal for intimate ceremonies and elopements."
+    price: "$200+"
+    features:
+      - Consultation
+      - On-site styling
+      - Light touch-ups
+  - name: Editorial
+    description: "Starting at $350 — Includes trial session and full-day support. Perfect for editorial looks and multi-person styling."
+    price: "$350+"
+    features:
+      - Trial session
+      - Bridal + party styling
+      - Travel & on-site support
