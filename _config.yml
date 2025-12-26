@@ -36,7 +36,7 @@ theme: minima
 permalink: pretty
 investment_title: Investment
 social:
-  instagram: nadiasosahair
+  instagram: https://www.instagram.com/nadiasosahair/
 markdown: kramdown
 url: ""
 defaults:
