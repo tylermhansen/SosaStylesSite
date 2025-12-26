@@ -51,3 +51,33 @@ collections:
           - { label: "About Title", name: "about_title", widget: "string" }
           - { label: "About Text", name: "about_text", widget: "text" }
           - { label: "Investment Title", name: "investment_title", widget: "string" }
+
+          # --- Brand Section ---
+          - label: "Brand Settings"
+            name: "brand"
+            widget: "object"
+            fields:
+              - { label: "Brand Name", name: "name", widget: "string" }
+              - { label: "Brand Location", name: "location", widget: "string" }
+              - label: "Palette"
+                name: "palette"
+                widget: "object"
+                fields:
+                  - { label: "Cream", name: "cream", widget: "string", default: "#F7EFE6" }
+                  - { label: "Charcoal", name: "charcoal", widget: "string", default: "#222222" }
+                  - { label: "Champagne", name: "champagne", widget: "string", default: "#D9CDBA" }
+              - label: "Fonts"
+                name: "fonts"
+                widget: "object"
+                fields:
+                  - { label: "Heading Font", name: "heading", widget: "string", default: "Cormorant Garamond" }
+                  - { label: "Body Font", name: "body", widget: "string", default: "Inter" }
+
+          # --- Social Section ---
+          - label: "Social Links"
+            name: "social"
+            widget: "object"
+            fields:
+              - { label: "Instagram", name: "instagram", widget: "string", required: false }
+              - { label: "Facebook", name: "facebook", widget: "string", required: false }
+              - { label: "Email", name: "email", widget: "string", required: false }
