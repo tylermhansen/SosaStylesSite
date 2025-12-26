@@ -177,11 +177,59 @@ description: {{ site.page_description | default: 'Bridal hair in Standish, Maine
 		<h2 class="font-heading text-3xl mb-4">Contact</h2>
 
 		<div class="bg-[color:var(--color-cream)] p-6 rounded-md shadow-sm border border-gray-200 mb-8">
-			<p class="mb-4 text-sm text-gray-700">To request availability, please send a message with your wedding date, venue, and style inspiration. For faster response, include images if you have them.</p>
-			<a href="mailto:{{ site.social.email }}?subject=Consultation%20Request" class="inline-block bg-[color:var(--color-champagne)] text-[color:var(--color-charcoal)] font-medium py-2 px-4 rounded hover:opacity-90 transition">Email to Book</a>
+			<p class="mb-4 text-sm text-gray-700">To request availability, please fill out the form below with your wedding date, venue, and style inspiration. To ensure your vision is realized, include inspiration images if you have them (I love a good Pinterest board!)</p>
+			<form name="booking" method="POST" data-netlify="true" class="space-y-4">
+				<input type="hidden" name="form-name" value="booking" />
+				<div id="form-success" class="hidden p-4 mb-4 rounded bg-green-100 text-green-800 text-center font-medium">Thank you! Your booking request was submitted. I'll be in touch shortly.</div>
+				<div>
+					<label for="name" class="block text-sm font-medium text-gray-700">Name</label>
+					<input type="text" id="name" name="name" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-champagne focus:ring focus:ring-champagne focus:ring-opacity-50" />
+				</div>
+				<div>
+					<label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+					<input type="email" id="email" name="email" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-champagne focus:ring focus:ring-champagne focus:ring-opacity-50" />
+				</div>
+				<div>
+					<label for="date" class="block text-sm font-medium text-gray-700">Wedding Date</label>
+					<input type="text" id="date" name="date" placeholder="e.g., June 15, 2026" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-champagne focus:ring focus:ring-champagne focus:ring-opacity-50" />
+				</div>
+				<div>
+					<label for="venue" class="block text-sm font-medium text-gray-700">Venue</label>
+					<input type="text" id="venue" name="venue" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-champagne focus:ring focus:ring-champagne focus:ring-opacity-50" />
+				</div>
+				<div>
+					<label for="guests" class="block text-sm font-medium text-gray-700">Number of Guests</label>
+					<input type="number" id="guests" name="guests" min="1" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-champagne focus:ring focus:ring-champagne focus:ring-opacity-50" />
+				</div>
+				<div>
+					<label for="inspiration" class="block text-sm font-medium text-gray-700">Style Inspiration / Notes</label>
+					<textarea id="inspiration" name="inspiration" rows="4" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-champagne focus:ring focus:ring-champagne focus:ring-opacity-50"></textarea>
+				</div>
+				<div>
+					<button id="booking-submit" type="submit" class="bg-[color:var(--color-champagne)] text-[color:var(--color-charcoal)] font-medium py-2 px-4 rounded hover:opacity-90 transition">Submit Booking Request</button>
+				</div>
+			</form>
 		</div>
 
-		<!-- Google Calendar Embed -->
+				<!-- Google Calendar Embed -->
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+	var form = document.querySelector('form[name="booking"]');
+	var successMsg = document.getElementById('form-success');
+	if(form && successMsg) {
+		form.addEventListener('submit', function(e) {
+			// Only show feedback locally, let Netlify handle production
+			if(window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+				e.preventDefault();
+				form.reset();
+				successMsg.classList.remove('hidden');
+				setTimeout(function(){ successMsg.classList.add('hidden'); }, 7000);
+			}
+		});
+	}
+});
+</script>
 		<div class="mb-8">
 			<h3 class="font-heading text-xl mb-2">Availability Calendar</h3>
 			<div class="aspect-w-16 aspect-h-9 w-full max-w-full rounded overflow-hidden border border-gray-200 bg-white">
