@@ -13,7 +13,7 @@ items:
       spray.
     package: Editorial
     date: June 15, 2024
-    photography: Example Photography Company
+    photography: Stock
   - title: Half Up Half Down
     alt: Another hairstyle placeholder.
     src: https://cdn.pixabay.com/photo/2017/07/25/10/37/woman-2537564_1280.jpg
@@ -24,13 +24,8 @@ items:
     package: Classic
     date: June 17, 2000
     description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-      eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-      minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-      ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-      velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-      cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-      est laborum.
-    photography: Example Photography Company
+      eiusmod tempor incididunt ut labore et dolore magna aliqua.
+    photography: Stock
   - title: Curls
     alt: Curly hair.
     src: https://cdn.pixabay.com/photo/2016/11/21/11/17/model-1844729_1280.jpg
@@ -38,18 +33,12 @@ items:
       - https://cdn.pixabay.com/photo/2016/11/21/11/17/model-1844729_1280.jpg
       - https://cdn.pixabay.com/photo/2018/01/13/19/26/fashion-3080626_1280.jpg
       - https://cdn.pixabay.com/photo/2021/04/13/08/14/woman-6175010_1280.jpg
-    description: >+
+    description: >
       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-      veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-      commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-      velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-      cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-      est laborum.
-
+      tempor incididunt ut labore et dolore magna aliqua.
     package: Classic
     date: August 16, 2000
-    photography: Example
+    photography: Stock
   - title: Floral Braids
     alt: Flowers in braided hair.
     src: https://images.pexels.com/photos/355063/pexels-photo-355063.jpeg
@@ -59,12 +48,7 @@ items:
       - https://images.pexels.com/photos/285284/pexels-photo-285284.jpeg
     description: >+
       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-      veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-      commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-      velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-      cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-      est laborum.
+      tempor incididunt ut labore et dolore magna aliqua. 
 
     package: Editorial
     date: December 25, 2025
