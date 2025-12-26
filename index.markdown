@@ -191,7 +191,7 @@ description: {{ site.page_description | default: 'Bridal hair in Standish, Maine
 				</div>
 				<div>
 					<label for="date" class="block text-sm font-medium text-gray-700">Wedding Date</label>
-					<input type="text" id="date" name="date" placeholder="e.g., June 15, 2026" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-champagne focus:ring focus:ring-champagne focus:ring-opacity-50" />
+					<input type="text" id="date" name="date" placeholder="e.g., May 25, 2025" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-champagne focus:ring focus:ring-champagne focus:ring-opacity-50" />
 				</div>
 				<div>
 					<label for="venue" class="block text-sm font-medium text-gray-700">Venue</label>
